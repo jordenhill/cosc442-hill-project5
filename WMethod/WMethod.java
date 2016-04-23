@@ -389,17 +389,18 @@ public class WMethod{
     	 Utilities.runFSM(FSM, 1, test, " ");
      }
      
-     int i = 0;
+     int i = 1;
      boolean containsYes;
      
      for (String test : tests) {
     	 containsYes = Utilities.getOutputPatterns(FSM, 1, test, " ");
-    	 System.out.println("public void testCase" + i + "(){");
+    	 System.out.println("@Test");
+    	 System.out.println("public void testCase" + i + "() {");
     	 if (containsYes) {
-    		 System.out.println("    assertTrue(" + test + ")");
+    		 System.out.println("    assertTrue(jb.bondRegex(\"" + test + "\"));");
     	 }
     	 else {
-    		 System.out.println("    assertFalse(" + "\"" + test + "\")");
+    		 System.out.println("    assertFalse(jb.bondRegex(\"" + test + "\"));");
     	 }
     	 System.out.println("}");
     	 System.out.println();
