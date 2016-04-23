@@ -389,10 +389,25 @@ public class WMethod{
     	 Utilities.runFSM(FSM, 1, test, " ");
      }
      
+     int i = 0;
+     boolean containsYes;
+     
+     for (String test : tests) {
+    	 containsYes = Utilities.getOutputPatterns(FSM, 1, test, " ");
+    	 System.out.println("public void testCase" + i + "(){");
+    	 if (containsYes) {
+    		 System.out.println("    assertTrue(" + test + ")");
+    	 }
+    	 else {
+    		 System.out.println("    assertFalse(" + "\"" + test + "\")");
+    	 }
+    	 System.out.println("}");
+    	 System.out.println();
+    	 i++;
+     }
    }// End of main()
    
 }//End of class WMethod
-
 
 
 
